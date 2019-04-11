@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<center><div id="number" style="height: 50px;width: 220px;border: solid 1px black;overflow: hidden"></div></center>
+<center>
+    <button onclick="AC()"style="height: 50px;width: 50px">AC</button>
+<button style="height: 50px;width: 50px">DEL</button>
+<button onclick="setoperator('%')" style="height: 50px;width: 50px">%</button>
+<button onclick="setoperator('÷')" style="height: 50px;width: 50px">÷</button>
+    </center>
+<center>
+<button onclick="number('7')" style="height: 50px;width: 50px">7</button>
+<button onclick="number('8')" style="height: 50px;width: 50px">8</button>
+<button onclick="number('9')" style="height: 50px;width: 50px">9</button>
+<button onclick="setoperator('*')"  style="height: 50px;width: 50px">*</button>
+</center>
+<center>
+<button onclick="number('4')"style="height: 50px;width: 50px">4</button>
+<button onclick="number('5')"style="height: 50px;width: 50px">5</button>
+<button onclick="number('6')"style="height: 50px;width: 50px">6</button>
+<button onclick="setoperator('-')" style="height: 50px;width: 50px">-</button>
+</center>
+<center>
+<button onclick="number('1')" style="height: 50px;width: 50px">1</button>
+<button onclick="number('2')" style="height: 50px;width: 50px">2</button>
+<button onclick="number('3')" style="height: 50px;width: 50px">3</button>
+<button onclick="setoperator('+')"style="height: 50px;width: 50px">+</button>
+</center>
+<center>
+<button style="height: 50px;width: 50px">#</button>
+<button onclick="number('0')"style="height: 50px;width: 50px">0</button>
+<button style="height: 50px;width: 50px">.</button>
+<button onclick="ravno()"style="height: 50px; width: 50px">=</button>
+</center>
+<script>
+    text1=""
+    text2=""
+    count=false
+    function number (text3){
+        if (count==false){
+            text1=text1+text3
+            document.getElementById("number").innerHTML=text1
+        } else if (count==true){
+            text2+=text3
+            document.getElementById("number").innerHTML=text2
+        }
+    }
+    operator=""
+    function setoperator (operator1) {
+        operator=operator1
+        count=true
+    }
+    function AC () {
+        if (count==false){
+            text1=''
+            document.getElementById("number").innerHTML=text1
+        } else if (count==true){
+            text2=''
+            document.getElementById("number").innerHTML=text2
+        }
+    }
+    function ravno () {
+        if (count==true&&operator=='+'){
+            text1=parseInt(text1)+parseInt(text2)
+            count=true
+            document.getElementById('number').innerHTML=text1
+        }
+        if (count==true&&operator=='-'){
+            text1=parseInt(text1)-parseInt(text2)
+            count=true
+            document.getElementById('number').innerHTML=text1
+        }
+         if (count==true&&operator=='*'){
+            text1=parseInt(text1)*parseInt(text2)
+            count=true
+            document.getElementById('number').innerHTML=text1
+        }
+    }
+</script>
+</body>
+</html>
